@@ -16,3 +16,6 @@ def comofunciona(request):
 
 def procon(request):
 	return render(request, 'procon.html')
+
+def charts(request):
+	return render(request, 'charts.html')

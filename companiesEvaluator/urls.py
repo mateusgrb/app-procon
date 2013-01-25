@@ -7,5 +7,6 @@ urlpatterns = patterns('',
    url(r'^ranking', views.ranking, name='ranking'),
    url(r'^compare', views.compare, name='compare'),
    url(r'^comofunciona', views.comofunciona, name='comofunciona'),
-   url(r'^procon', views.procon, name='procon')
+   url(r'^procon', views.procon, name='procon'),
+   url(r'^charts', views.charts, name='charts')
 )
