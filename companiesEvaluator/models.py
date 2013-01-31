@@ -2,15 +2,15 @@
 from django.db import models
 
 class Fornecedor(models.Model):
-    str_razao_social = models.CharField(max_length=80)
+    str_razao_social = models.CharField(max_length=80, primary_key=True)
     str_nome_fantasia = models.CharField(max_length=80)
     tipo = models.IntegerField()
-    numero_cnpj = models.CharField(max_length=10)
-    radical_cnpj = models.CharField(max_length=10)
+    numero_cnpj = models.CharField(max_length=20)
+    radical_cnpj = models.CharField(max_length=12)
     razao_social_rfb = models.CharField(max_length=80)
     nome_fantasia_rfb = models.CharField(max_length=80)
     cnae_principal = models.CharField(max_length=20)
-    desc_cnae_principal = models.CharField(max_length=80)
+    desc_cnae_principal = models.CharField(max_length=120)
 
 class Reclamacao(models.Model):
     ano_calendario = models.IntegerField()
