@@ -15,4 +15,5 @@ def import_data(filename):
             descricao_assunto=row[17].decode('ISO-8859-1'), codigo_problema=row[18], descricao_problema=row[19].decode('ISO-8859-1'),
             sexo_consumidor=row[20], faixa_etaria_consumidor=row[21],
             cep_consumidor=row[22], fornecedor=f)
-        r.save()     
+        r.save()    
+    file_read.close() 
