@@ -4,6 +4,8 @@
 from companiesEvaluator.models import Reclamacao, Fornecedor
 
 #This file contains functions that evaluate a company according to the Region complaints.
+
+#constants
 NORTE = 'Norte'
 NORDESTE = 'Nordeste'
 SUL = 'Sul'
@@ -39,7 +41,7 @@ def get_evaluation_by_region_year(company, year):
     This function gives the evaluation of a company (Fornecedor) based on the evaluation region and the specified year.
     1. Filters the results based on the 'str_nome_fantasia' of the company.
     
-    2. The return contains the amount of all claims of every year for the company.
+    2. The return contains the amount of all claims related to the year.
     
     Input: 
         company - an ID that represents the company.
