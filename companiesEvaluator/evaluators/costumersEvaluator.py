@@ -47,7 +47,6 @@ def get_evaluation_by_costumer_gender_year(company):
     Example: {'Mulheres'=100, 'Homens'=500}
     '''
     mulheres_evaluation = Reclamacao.objects.filter(sexo_consumidor=WOMEN_SEARCH, fornecedor__str_nome_fantasia=company, ano_calendario=year)
-    homens_evaluation = Reclamacao.objects.filter(sexo_consumidor=MEN_SEARCH, fornecedor__str_nome_fantasia=companyano_calendario=year)
-    #outras_empresas_evaluation = Reclamacao.objects.filter(sexo_consumidor='N') 
+    homens_evaluation = Reclamacao.objects.filter(sexo_consumidor=MEN_SEARCH, fornecedor__str_nome_fantasia=companyano_calendario=year) 
     
     return {WOMEN: len(mulheres_evaluation), MEN: len(homens_evaluation)}
