@@ -24,11 +24,10 @@ def get_evaluation_by_costumer_gender(company):
         include_other_companies - flag that determines whether the evaluation should include consumers of type company ("pessoa jurídica").
         
     returns: A dictionary with the name of the region and the quantity of complaints coming from there.
-    Example: {'Mulheres':100, 'Homens':500, 'Outras empresas':200}
+    Example: {'Mulheres':100, 'Homens':500}
     '''
     mulheres_evaluation = Reclamacao.objects.filter(sexo_consumidor=WOMEN_SEARCH, fornecedor__str_nome_fantasia=company)
     homens_evaluation = Reclamacao.objects.filter(sexo_consumidor=MEN_SEARCH, fornecedor__str_nome_fantasia=company)
-    #outras_empresas_evaluation = Reclamacao.objects.filter(sexo_consumidor='N') 
     
     return {WOMEN: len(mulheres_evaluation), MEN: len(homens_evaluation)}
     
@@ -44,7 +43,7 @@ def get_evaluation_by_costumer_gender_year(company):
         include_other_companies - flag that determines whether the evaluation should include consumers of type company ("pessoa jurídica").
         
     returns: A dictionary with the name of the region and the quantity of complaints coming from there.
-    Example: {'Mulheres':100, 'Homens':500, 'Outras empresas':200}
+    Example: {'Mulheres':100, 'Homens':500}
     '''
     mulheres_evaluation = Reclamacao.objects.filter(sexo_consumidor=WOMEN_SEARCH, fornecedor__str_nome_fantasia=company, ano_calendario=year)
     homens_evaluation = Reclamacao.objects.filter(sexo_consumidor=MEN_SEARCH, fornecedor__str_nome_fantasia=company, ano_calendario=year) 
