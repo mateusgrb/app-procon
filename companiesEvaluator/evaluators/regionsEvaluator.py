@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -
-# This Python file uses th encoding utf-8
+# This Python file uses the encoding utf-8
 
-from companiesEvaluator.models import Reclamacao, Fornecedor
+from companiesEvaluator.models import Reclamacao
 
 #This file contains functions that evaluate a company according to the Region complaints.
 
@@ -22,7 +22,7 @@ def get_evaluation_by_region(company):
     Input: company - an ID that represents the company.
     
     returns: A dictionary with the name of the region and the quantity of complaints coming from there.
-    Example: {'Norte'=100, 'Nordeste'=500, 'Centro-Oeste'=700, 'Sul'=1000, 'Sudeste'=3000}
+    Example: {'Norte':100, 'Nordeste':500, 'Centro-Oeste':700, 'Sul':1000, 'Sudeste':3000}
     '''
     
     #Esse filtro pode mudar
@@ -48,7 +48,7 @@ def get_evaluation_by_region_year(company, year):
         year - an Integer that represents the year of the complaints.
         
     returns: A dictionary with the name of the region and the quantity of complaints coming from there.
-    Example: {'Norte'=100, 'Nordeste'=500, 'Centro-Oeste'=700, 'Sul'=1000, 'Sudeste'=3000}
+    Example: {'Norte':100, 'Nordeste':500, 'Centro-Oeste':700, 'Sul':1000, 'Sudeste':3000}
     '''
     
     #For now, the query search based on Fornecedors' str_nome_fantasia.
