@@ -3,3 +3,6 @@
 
 # Databases #
 *.db
+
+# Settings file #
+settings.py
