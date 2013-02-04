@@ -1,9 +1,37 @@
-<ul>
-	<li><a href="/companies">Busca</a></li>
-	<li><a href="/companies/ranking">Ranking</a></li>
-	<li><a href="/companies/compare">Compare</a></li>
-	<li><a href="/companies/comofunciona">Como funciona</a></li>
-	<li><a href="/companies/procon">Procon</a></li>
-	<li><a href="/companies/charts">Charts</a></li>
-</ul>
-{% block content %}{% endblock %}
+<html>
+<head>
+    <link href="{{ STATIC_URL  }}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+          padding-top: 60px;
+      }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">App_procon</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/companies">Busca</a></li>
+              <li><a href="/companies/ranking">Ranking</a></li>
+              <li><a href="/companies/compare">Compare</a></li>
+              <li><a href="/companies/comofunciona">Como funciona</a></li>
+              <li><a href="/companies/procon">Procon</a></li>
+              <li><a href="/companies/charts">Charts</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+<html>
