@@ -1,5 +1,12 @@
 {% extends "template.html" %}
 {% block content %}
-<input type="search" name="search"/>
-<input type="button" name="searchbutton" value="Buscar"/>
+<form action="/companies/" method="post">{% csrf_token  %}
+{{ form.as_p }}
+<input type="submit" name="searchbutton" value="Buscar"/>
+</form>
+{% for fornecedor in fornecedores %}
+<p>
+{{ fornecedor.str_razao_social }}
+</p>
+{% endfor %}
 {% endblock %}

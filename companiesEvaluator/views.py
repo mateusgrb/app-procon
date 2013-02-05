@@ -2,21 +2,37 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from companiesEvaluator.models import Fornecedor, Reclamacao
+from forms import SearchForm
 
-def index(request):
-	return render(request, 'index.html')
+def search(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            keyword = form.cleaned_data['keyword']
+            f = Fornecedor.objects.filter(str_razao_social__contains=keyword)
+            print f
+            return render(request, 'index.html', {
+                'form': form,
+                'fornecedores': f,
+            })
+    else:
+        form = SearchForm(auto_id=False)
+
+    return render(request, 'index.html', {
+        'form': form,
+    })
 
 def ranking(request):
-	return render(request, 'ranking.html')
+    return render(request, 'ranking.html')
 
 def compare(request):
-	return render(request, 'compare.html')
+    return render(request, 'compare.html')
 
 def comofunciona(request):
-	return render(request, 'comofunciona.html')
+    return render(request, 'comofunciona.html')
 
 def procon(request):
-	return render(request, 'procon.html')
+    return render(request, 'procon.html')
 
 def charts(request):
-	return render(request, 'charts.html')
+    return render(request, 'charts.html')
