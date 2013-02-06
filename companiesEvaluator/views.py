@@ -1,6 +1,7 @@
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.db.models import Q
 from companiesEvaluator.models import Fornecedor, Reclamacao
 from forms import SearchForm
 
@@ -9,8 +10,8 @@ def search(request):
         form = SearchForm(request.POST)
         if form.is_valid():
             keyword = form.cleaned_data['keyword']
-            f = Fornecedor.objects.filter(str_razao_social__contains=keyword)
-            print f
+            f = Fornecedor.objects.filter(Q(str_razao_social__icontains=keyword)
+                | Q(str_nome_fantasia__icontains=keyword))
             return render(request, 'index.html', {
                 'form': form,
                 'fornecedores': f,
