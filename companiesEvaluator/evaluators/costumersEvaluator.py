@@ -38,7 +38,7 @@ def get_evaluation_by_costumer_gender(company):
     
     return {WOMEN: len(mulheres_evaluation), MEN: len(homens_evaluation)}
     
-def get_evaluation_by_costumer_gender_year(company):
+def get_evaluation_by_costumer_gender_year(company, year):
     '''
     This function gives the evaluation of a company based on the costumer type.
     1. Filters the results based on the 'str_nome_fantasia' of the company.
@@ -62,11 +62,10 @@ def get_evaluation_by_costumer_age_group(company):
     This function gives the evaluation of a company based on the costumer age group.
     1. Filters the results based on the 'str_nome_fantasia' of the company.
     
-    2. The return contains the amount of all claims of every year for the company.
+    2. The return contains the amount of all claims related to the year..
     
     Input: 
         company - an ID that represents the company.
-        include_other_companies - flag that determines whether the evaluation should include consumers of type company ("pessoa jurídica").
         
     returns: A dictionary with the name of the region and the quantity of complaints coming from there.
     Example: {'0-20':100, '21-30': 200, '31-40':800, '41-50':1560, '51-60':20, '61-70':200, '70+':80, 'Desconhecido':30}
@@ -80,6 +79,31 @@ def get_evaluation_by_costumer_age_group(company):
     group_61_70_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_61_70)
     group_70_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_70)
     group_nf_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_nf)
+    
+    return {group_20: len(group_20_evaluation), group_21_30: len(group_21_30_evaluation), group_31_40: len(group_31_40_evaluation), group_41_50: len(group_41_50_evaluation), group_51_60: len(group_51_60_evaluation), group_61_70: len(group_61_70_evaluation), group_70: len(group_70_evaluation), group_nf: len(group_nf_evaluation)}
+    
+def get_evaluation_by_costumer_age_group_year(company, year):
+    '''
+    This function gives the evaluation of a company based on the costumer age group.
+    1. Filters the results based on the 'str_nome_fantasia' of the company.
+    
+    2. The return contains the amount of all claims of every year for the company.
+    
+    Input: 
+        company - an ID that represents the company.
+        
+    returns: A dictionary with the name of the region and the quantity of complaints coming from there.
+    Example: {'0-20':100, '21-30': 200, '31-40':800, '41-50':1560, '51-60':20, '61-70':200, '70+':80, 'Desconhecido':30}
+    '''
+    
+    group_20_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_20, ano_calendario=year)  
+    group_21_30_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_21_30, ano_calendario=year)
+    group_31_40_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_31_40, ano_calendario=year)
+    group_41_50_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_41_50, ano_calendario=year)
+    group_51_60_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_51_60, ano_calendario=year)
+    group_61_70_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_61_70, ano_calendario=year)
+    group_70_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_70, ano_calendario=year)
+    group_nf_evaluation = Reclamacao.objects.filter(faixa_etaria_consumidor=group_nf, ano_calendario=year)
     
     return {group_20: len(group_20_evaluation), group_21_30: len(group_21_30_evaluation), group_31_40: len(group_31_40_evaluation), group_41_50: len(group_41_50_evaluation), group_51_60: len(group_51_60_evaluation), group_61_70: len(group_61_70_evaluation), group_70: len(group_70_evaluation), group_nf: len(group_nf_evaluation)}
 
