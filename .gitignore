@@ -6,3 +6,9 @@
 
 # Settings file #
 settings.py
+
+# ~py Files #
+*.py~
+
+# ~html Files #
+*.html~
