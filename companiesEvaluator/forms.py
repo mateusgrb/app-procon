@@ -1,5 +1,5 @@
 from django import forms
 
 class SearchForm(forms.Form):
-    keyword = forms.CharField(max_length=180, label="")
+    keyword = forms.CharField(max_length=180, label="", required=False)
 
