@@ -1,4 +1,17 @@
 {% extends "template.html" %}
 {% block content %}
 <p>Ranking</p>
+<table>
+<th>ID</th>
+<th>Razão social</th>
+<th>Radical CNPJ</th>
+<th>Quantidade de reclamações</th>
+{% for fornecedor in fornecedores %}
+<tr>
+{% for coluna in fornecedor %}
+<td>{{ coluna }}</td>
+{% endfor %}
+</tr>
+{% endfor  %}
+</table>
 {% endblock %}
