@@ -12,3 +12,6 @@ settings.py
 
 # ~html Files #
 *.html~
+
+# swp files #
+*.swp
