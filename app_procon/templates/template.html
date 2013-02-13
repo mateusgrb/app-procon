@@ -19,12 +19,14 @@
           <a class="brand" href="#">App_procon</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
+              {% block menubar_links %}
               <li class="active"><a href="/companies">Busca</a></li>
               <li><a href="/companies/ranking">Ranking</a></li>
               <li><a href="/companies/compare">Compare</a></li>
               <li><a href="/companies/comofunciona">Como funciona</a></li>
               <li><a href="/companies/procon">Procon</a></li>
               <li><a href="/companies/charts">Charts</a></li>
+              {% endblock %}
             </ul>
           </div><!--/.nav-collapse -->
         </div>
