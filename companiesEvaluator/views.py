@@ -3,20 +3,22 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.db.models import Q
 from companiesEvaluator.models import Fornecedor, Reclamacao
-from forms import SearchForm
 from companiesEvaluator.ranking.ranking_manager import rank_by_complaints
+from forms import SearchForm
+from companiesEvaluator.search.searchCompany import searchCompanies
 	  	
 def search(request):	  	
     if request.method == 'POST':
 	 form = SearchForm(request.POST)
          if form.is_valid():
              keyword = form.cleaned_data['keyword']
-             f = Fornecedor.objects.filter(Q(str_razao_social__icontains=keyword)
-                 | Q(str_nome_fantasia__icontains=keyword))
-	     return render(request, 'index.html', {
+             fornecedores = searchCompanies(keyword)
+            #f = Fornecedor.objects.filter(Q(str_razao_social__icontains=keyword)
+            #    | Q(str_nome_fantasia__icontains=keyword))
+            return render(request, 'index.html', {
                 'form': form,
-                'fornecedores': f,
-            })  	
+                'fornecedores': fornecedores,
+            })
     else:
         form = SearchForm(auto_id=False)
     
