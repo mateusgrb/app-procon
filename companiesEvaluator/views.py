@@ -5,6 +5,8 @@ from django.db.models import Q
 from companiesEvaluator.models import Fornecedor, Reclamacao
 from forms import SearchForm
 from companiesEvaluator.ranking.ranking_manager import rank_by_complaints
+from django.shortcuts import render
+from companiesEvaluator.search.searchCompany import searchCompanies
 	  	
 def search(request):	  	
     if request.method == 'POST':
