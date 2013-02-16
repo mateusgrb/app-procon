@@ -11,7 +11,8 @@ class Fornecedor(models.Model):
     nome_fantasia_rfb = models.CharField(max_length=180)
     cnae_principal = models.CharField(max_length=20)
     desc_cnae_principal = models.CharField(max_length=180)
-    
+    quantidade_reclamacoes = 0    
+ 
     def __unicode__(self):
         return 'Razao social: ' + str(self.str_razao_social) + '. Nome Fantasia: ' + str(self.str_nome_fantasia) + '. CNPJ: ' + str(self.numero_cnpj) + '. Radical: ' + str(self.radical_cnpj)
 
