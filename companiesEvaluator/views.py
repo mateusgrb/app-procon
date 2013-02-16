@@ -6,16 +6,14 @@ from companiesEvaluator.models import Fornecedor, Reclamacao
 from forms import SearchForm
 from companiesEvaluator.ranking.ranking_manager import rank_by_complaints
 from django.shortcuts import render
-from companiesEvaluator.search.searchCompany import searchCompanies
+from companiesEvaluator.search.search_company import search_companies
 	  	
 def search(request):	  	
     if request.method == 'POST':
 	 form = SearchForm(request.POST)
          if form.is_valid():
             keyword = form.cleaned_data['keyword']
-            fornecedores = searchCompanies(keyword)
-            #f = Fornecedor.objects.filter(Q(str_razao_social__icontains=keyword)
-            #    | Q(str_nome_fantasia__icontains=keyword))
+            fornecedores = search_companies(keyword)
             return render(request, 'index.html', {
                 'form': form,
                 'fornecedores': fornecedores,
