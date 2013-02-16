@@ -7,4 +7,10 @@ def rank_by_complaints(limit=20):
     cursor = connection.cursor()
     cursor.execute(query)
     result = cursor.fetchall()
-    return list(result)
+    result_list = [__create_ranking_row(row) for row in result]
+    return result_list
+
+def __create_ranking_row(row):
+    f = Fornecedor(id=row[0], str_razao_social=row[1], radical_cnpj=row[2])
+    f.quantidade_reclamacoes = row[3]
+    return f

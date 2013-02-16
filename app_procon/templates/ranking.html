@@ -8,17 +8,16 @@
 <li><a href="/companies/charts">Charts</a></li>
 {% endblock %}
 {% block content %}
-<p>Ranking</p>
+<h2>Empresas com mais reclamações registradas</h2>
 <table>
-<th>ID</th>
-<th>Razão social</th>
-<th>Radical CNPJ</th>
+<th>Ranking</th>
+<th>Nome(Razão social)</th>
 <th>Quantidade de reclamações</th>
 {% for fornecedor in fornecedores %}
 <tr>
-{% for coluna in fornecedor %}
-<td>{{ coluna }}</td>
-{% endfor %}
+<td>{{ forloop.counter }}</td>
+<td><a href="/companies/{{ fornecedor.id }}">{{ fornecedor.str_razao_social }}</a></td>
+<td>{{ fornecedor.quantidade_reclamacoes }}</td>
 </tr>
 {% endfor  %}
 </table>
