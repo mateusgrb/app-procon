@@ -31,3 +31,8 @@
 #footer {
     background-color: #f5f5f5;
 }
+
+.errorlist {
+    visibility: hidden;
+    height: 0px;
+}

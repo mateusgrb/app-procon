@@ -1,11 +1,11 @@
 {% extends "template.html" %}
 {% block menubar_links %}
-<li><a href="/companies">Busca</a></li>
-<li class="active"><a href="/companies/ranking">Ranking</a></li>
-<li><a href="/companies/compare">Compare</a></li>
-<li><a href="/companies/comofunciona">Como funciona</a></li>
-<li><a href="/companies/procon">Procon</a></li>
-<li><a href="/companies/charts">Charts</a></li>
+<li><a href="/app_procon/">Empresas</a></li>
+<li class="active"><a href="/app_procon/ranking">Ranking</a></li>
+<li><a href="/app_procon/compare">Compare</a></li>
+<li><a href="/app_procon/comofunciona">Como funciona</a></li>
+<li><a href="/app_procon/procon">Procon</a></li>
+<li><a href="/app_procon/charts">Charts</a></li>
 {% endblock %}
 {% block content %}
 <div>
@@ -17,7 +17,7 @@
 {% for fornecedor in fornecedores_reclamacoes %}
 <tr>
 <td>{{ forloop.counter }}</td>
-<td><a href="/companies/{{ fornecedor.id }}">{{ fornecedor.str_nome_fantasia }}</a></td>
+<td><a href="/empresas/{{ fornecedor.id }}">{{ fornecedor.str_nome_fantasia }}</a></td>
 <td>{{ fornecedor.quantidade_reclamacoes }}</td>
 </tr>
 </div>
