@@ -10,7 +10,7 @@
 {% block content %}
 <form action="/companies/" method="post">{% csrf_token  %}
 {{ form.as_p }}
-<input type="submit" name="searchbutton" value="Buscar"/>
+<input type="submit" class="btn btn-primary searchbutton" name="searchbutton" value="Buscar"/>
 </form>
 {% for fornecedor in fornecedores %}
 <p>
