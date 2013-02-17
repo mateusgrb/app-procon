@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from companiesEvaluator.models import Fornecedor, Reclamacao
 from forms import SearchForm
-from companiesEvaluator.ranking.ranking_manager import rank_by_complaints
+from companiesEvaluator.ranking.ranking_manager import rank_by_complaints, rank_by_adressed_complaints, rank_by_non_adressed_complaints, rank_by_common_problems
 from django.shortcuts import render
 from companiesEvaluator.search.search_company import search_companies
 	  	
@@ -26,9 +26,15 @@ def search(request):
     })
 	  	
 def ranking(request):
-    result = rank_by_complaints()
+    companies_by_complaints = rank_by_complaints()
+    companies_by_adressed_complaints = rank_by_adressed_complaints()
+    companies_by_non_adressed_complaints = rank_by_non_adressed_complaints()
+    common_problems = rank_by_common_problems()
     return render(request, 'ranking.html', {
-        'fornecedores': result,
+        'fornecedores_reclamacoes': companies_by_complaints,
+        'fornecedores_reclamacoes_atendidas': companies_by_adressed_complaints,
+        'fornecedores_reclamacoes_nao_atendidas': companies_by_non_adressed_complaints,
+        'problemas_comuns': common_problems,
     })
 	  	
 def compare(request):
