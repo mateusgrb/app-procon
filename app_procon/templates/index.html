@@ -1,4 +1,7 @@
 {% extends "template.html" %}
+{% block scripts %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/script.js" ></script>
+{% endblock %}
 {% block menubar_links %}
 <li class="active"><a href="/app_procon/">Empresas</a></li>
 <li><a href="/app_procon/ranking">Ranking</a></li>
