@@ -14,6 +14,7 @@ class Fornecedor(models.Model):
     quantidade_reclamacoes = 0    
     percentual_reclamacoes_atendidas = 0
     percentual_reclamacoes_nao_atendidas = 0
+    id_empresa = models.IntegerField()
  
     def __unicode__(self):
         return 'Razao social: ' + str(self.str_razao_social) + '. Nome Fantasia: ' + str(self.str_nome_fantasia) + '. CNPJ: ' + str(self.numero_cnpj) + '. Radical: ' + str(self.radical_cnpj)
