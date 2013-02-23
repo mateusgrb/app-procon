@@ -8,6 +8,10 @@ def group_companies():
     set_id_empresas(fornecedores)
 
 def set_id_empresas(fornecedores):
+    '''
+        Setting the id_empresa attribute of every company (Fornecedor), based on their str_razao_social's similarity.
+    '''
+    
     novo_id = 1
     lista_com_id = []
     for fornecedor in fornecedores:
@@ -33,16 +37,18 @@ def set_id_empresas(fornecedores):
                 fornecedor.id_empresa = novo_id
                 novo_id = novo_id + 1
             else:
-                if(get_similarity(fornecedor.str_razao_social, similars[0].str_razao_social) > 0.7):
-                    fornecedor.id_empresa = similars[0].id_empresa
+                fornecedor.id_empresa = similars[0].id_empresa
     
         else:
             fornecedor.id_empresa = novo_id
             novo_id = novo_id + 1
         
         lista_com_id.append(fornecedor)
-        
-    return lista_com_id    
+        #fornecedor.save()
+        Fornecedor.objects.filter(numero_cnpj=fornecedor.numero_cnpj).update(id_empresa=fornecedor.id_empresa)
+     
+    return 0   
+    #return lista_com_id    
     
     
     
