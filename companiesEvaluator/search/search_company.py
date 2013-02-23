@@ -3,10 +3,11 @@
 
 from companiesEvaluator.models import *
 from django.db.models import Q
+import copy
 
 def search_companies(companyName):
     '''
-    Search a company (Fornecedor) with the closest name.
+    Search a company (Fornecedor) with the similar names .
     
     input: companyName (String with the name or part of the name os a Company (Fornecedor))
     
@@ -21,6 +22,8 @@ def search_companies(companyName):
 def filter_list(fornecedores):
     filtered_list = []
     for fornecedor in fornecedores:
+        if(fornecedor.str_nome_fantasia.lower() == 'null'):
+                fornecedor.str_nome_fantasia = copy.copy(fornecedor.str_razao_social)
         if (not (contains_company(filtered_list, fornecedor))):
             filtered_list.append(fornecedor)
             
