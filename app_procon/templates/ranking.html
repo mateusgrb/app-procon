@@ -1,24 +1,82 @@
 {% extends "template.html" %}
 {% block menubar_links %}
-<li><a href="/companies">Busca</a></li>
-<li class="active"><a href="/companies/ranking">Ranking</a></li>
-<li><a href="/companies/compare">Compare</a></li>
-<li><a href="/companies/comofunciona">Como funciona</a></li>
-<li><a href="/companies/procon">Procon</a></li>
-<li><a href="/companies/charts">Charts</a></li>
+<li><a href="/app_procon/">Empresas</a></li>
+<li class="active"><a href="/app_procon/ranking">Ranking</a></li>
+<li><a href="/app_procon/compare">Compare</a></li>
+<li><a href="/app_procon/comofunciona">Como funciona</a></li>
+<li><a href="/app_procon/procon">Procon</a></li>
+<li><a href="/app_procon/charts">Charts</a></li>
 {% endblock %}
 {% block content %}
+<div>
 <h2>Empresas com mais reclamações registradas</h2>
 <table>
 <th>Ranking</th>
-<th>Nome(Razão social)</th>
+<th>Nome</th>
 <th>Quantidade de reclamações</th>
-{% for fornecedor in fornecedores %}
+{% for fornecedor in fornecedores_reclamacoes %}
 <tr>
 <td>{{ forloop.counter }}</td>
-<td><a href="/companies/{{ fornecedor.id }}">{{ fornecedor.str_razao_social }}</a></td>
+<td><a href="/empresas/{{ fornecedor.id }}">{{ fornecedor.str_nome_fantasia }}</a></td>
 <td>{{ fornecedor.quantidade_reclamacoes }}</td>
 </tr>
+</div>
 {% endfor  %}
 </table>
+<div>
+<h2>
+Empresas com maior percentual de reclamações atendidas
+</h2>
+<table>
+<th>Ranking</th>
+<th>Nome</th>
+<th>Percentual de reclamações atendidas</th>
+{% for fornecedor in fornecedores_reclamacoes_atendidas %}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td><a href="/companies/{{ fornecedor.id }}">{{ fornecedor.str_nome_fantasia }}</a></td>
+<td>{{ fornecedor.percentual_reclamacoes_atendidas }}%</td>
+</tr>
+</div>
+{% endfor  %}
+</table>
+</div>
+<div>
+<h2>
+Empresas com maior percentual de reclamações não atendidas
+</h2>
+<table>
+<th>Ranking</th>
+<th>Nome</th>
+<th>Percentual de reclamações não atendidas</th>
+{% for fornecedor in fornecedores_reclamacoes_nao_atendidas %}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td><a href="/companies/{{ fornecedor.id }}">{{ fornecedor.str_nome_fantasia }}</a></td>
+<td>{{ fornecedor.percentual_reclamacoes_nao_atendidas }}%</td>
+</tr>
+</div>
+{% endfor  %}
+</table>
+</div>
+</div>
+<div>
+<h2>
+Reclamação mais comum dos consumidores
+</h2>
+<table>
+<th>Ranking</th>
+<th>Problema</th>
+<th>Quantidade de ocorrências</th>
+{% for fornecedor in problemas_comuns %}
+<tr>
+<td>{{ forloop.counter }}</td>
+{% for coluna in fornecedor %}
+<td>{{ coluna }}</td>
+{% endfor %}
+</tr>
+</div>
+{% endfor  %}
+</table>
+</div>
 {% endblock %}

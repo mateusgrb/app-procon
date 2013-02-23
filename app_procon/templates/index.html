@@ -1,17 +1,21 @@
 {% extends "template.html" %}
 {% block menubar_links %}
-<li class="active"><a href="/companies">Busca</a></li>
-<li><a href="/companies/ranking">Ranking</a></li>
-<li><a href="/companies/compare">Compare</a></li>
-<li><a href="/companies/comofunciona">Como funciona</a></li>
-<li><a href="/companies/procon">Procon</a></li>
-<li><a href="/companies/charts">Charts</a></li>
+<li class="active"><a href="/app_procon/">Empresas</a></li>
+<li><a href="/app_procon/ranking">Ranking</a></li>
+<li><a href="/app_procon/compare">Compare</a></li>
+<li><a href="/app_procon/comofunciona">Como funciona</a></li>
+<li><a href="/app_procon/procon">Procon</a></li>
+<li><a href="/app_procon/charts">Charts</a></li>
 {% endblock %}
 {% block content %}
-<form action="/companies/" method="post">{% csrf_token  %}
+<form action="/app_procon/" method="post">{% csrf_token  %}
 {{ form.as_p }}
-<input type="submit" name="searchbutton" value="Buscar"/>
+<input type="submit" class="btn btn-primary searchbutton" name="searchbutton" value="Buscar"/>
 </form>
+{% if fornecedores %}
+<p>
+{{ fornecedores|length }} empresas encontradas 
+</p>
 {% for fornecedor in fornecedores %}
 <p>
 <a href="#">
@@ -19,4 +23,5 @@
 </a>
 </p>
 {% endfor %}
+{% endif %}
 {% endblock %}
